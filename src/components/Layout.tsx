@@ -92,6 +92,7 @@ export const Layout: FunctionComponent<{ children: ReactNode }> = ({
         </div>
       </div>
       {children}
+      <div className="h-[52px]" />
       <div className="absolute bottom-0 w-full bg-black py-4 text-center font-arial text-sm font-thin text-primary">
         © {new Date().getFullYear()} DIM PICTURES.
       </div>
