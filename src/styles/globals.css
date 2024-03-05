@@ -7,6 +7,16 @@
   src: url("/fonts/bebas.otf");
 }
 
+@font-face {
+  font-family: helveticaneue;
+  src: url("/fonts/HelveticaNeueLight.otf");
+}
+@font-face {
+  font-family: helveticaneue;
+  font-weight: bold;
+  src: url("/fonts/HelveticaNeueBold.otf");
+}
+
 html::-webkit-scrollbar,
 ::-webkit-scrollbar-button {
   display: none;

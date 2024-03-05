@@ -12,6 +12,7 @@ export default {
       fontFamily: {
         bebas: ["bebas"],
         arial: ["Arial", "sans-serif"],
+        helvetica: ["helveticaneue", "Helvetica"],
       },
     },
   },

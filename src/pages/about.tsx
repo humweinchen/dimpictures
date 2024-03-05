@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import { Carousel } from "@/components/Carousel";
 import { Layout } from "@/components/Layout";
-import { FunctionComponent } from "react";
+import { type FunctionComponent } from "react";
 
 const people: PeopleImageProps[] = [
   {
-    src: "https://via.placeholder.com/200",
+    src: "/assets/samuel.jpg",
     name: "Samuel",
     pos: "Cheif",
   },
@@ -40,6 +40,7 @@ const logos = [
   "21.png",
   "22.png",
   "23.jpg",
+  "24.png",
 ];
 
 const AboutPage = () => {
@@ -57,7 +58,7 @@ const AboutPage = () => {
       </div>
       <div className="flex flex-col items-center justify-center gap-20 pb-32 pt-24">
         <article className="max-w-[320px] md:max-w-screen-md">
-          <p className="text-justify font-arial text-xl">
+          <p className="font-helvetica text-justify text-xl">
             <span className="text-3xl font-bold uppercase">
               Started in 2022,
             </span>{" "}
@@ -65,7 +66,8 @@ const AboutPage = () => {
             Hence the birth of Dim Pictures.
             <br />
             <br />
-            Dim has 2 meanings here.
+            <span className="font-bebas text-2xl">D I M</span> has 2 meanings
+            here.
             <br />
             <br />
             One being the control of lighting which is our obsession with
@@ -87,14 +89,11 @@ const AboutPage = () => {
           </p>
         </article>
         <div className="flex w-full max-w-screen-md flex-col px-12">
-          <div className="flex h-[30px] w-full flex-row items-center justify-center bg-black">
-            <p className="font-outline-2 font-bebas text-[4.5rem] text-white">
-              The Brains
-            </p>
-          </div>
-
-          <div className="mt-12 grid w-full justify-items-center gap-12 md:grid-cols-2">
-            {people.map((pax, i) => (
+          <p className="font-bebas text-[3.5rem] text-black">
+            THE MACHINES BEHIND.
+          </p>
+          <div className="mt-8 grid w-full justify-items-center gap-12 md:grid-cols-2">
+            {people.map((pax) => (
               <PeopleImage
                 key={pax.name}
                 name={pax.name}
@@ -105,7 +104,7 @@ const AboutPage = () => {
           </div>
         </div>
         <div className="flex w-full flex-col items-center justify-center">
-          <p className="mb-12 font-arial text-4xl font-bold uppercase">
+          <p className="font-helvetica mb-12 text-4xl font-bold uppercase">
             Our Clients
           </p>
           <Carousel images={logos} />
@@ -129,7 +128,11 @@ const PeopleImage: FunctionComponent<PeopleImageProps> = ({
 }) => {
   return (
     <div className="flex flex-col justify-start">
-      <img src={src} alt={name} className="w-full" />
+      <img
+        src={src}
+        alt={name}
+        className="h-[200px] w-[200px] object-cover object-center"
+      />
       <p className="mt-2 font-bebas text-3xl tracking-tight">{name}</p>
       <p className="-mt-1 text-lg font-thin uppercase">{pos}</p>
     </div>
