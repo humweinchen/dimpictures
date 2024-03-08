@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @next/next/no-img-element */
 import { Layout } from "@/components/Layout";
-import { env } from "@/env";
 import { IoClose } from "react-icons/io5";
 import { Rings } from "react-loader-spinner";
 
@@ -12,11 +11,16 @@ import {
   useState,
   useEffect,
 } from "react";
-import { type Video, convertToReadableVideo } from "@/helper";
+import {
+  type ReadableVideoByCategory,
+  type Video,
+  convertToReadableVideo,
+} from "@/helper";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
 
 const WorksPage = () => {
   const [currentSelected, setCurrentSelected] = useState<Video>();
-  const [videos, setVideos] = useState<Video[]>([]);
+  const [videosGroup, setVideosGroup] = useState<ReadableVideoByCategory[]>([]);
 
   const [pageLoading, setPageLoading] = useState(true);
 
@@ -26,7 +30,7 @@ const WorksPage = () => {
         res.json().then((res2) => {
           const returnedVideos = res2.data.values as string[][];
           returnedVideos.shift();
-          setVideos(convertToReadableVideo(returnedVideos));
+          setVideosGroup(convertToReadableVideo(returnedVideos));
           setPageLoading(false);
         }),
       );
@@ -38,28 +42,30 @@ const WorksPage = () => {
     if (!currentSelected) document.body.style.overflow = "";
   }, [currentSelected]);
   return (
-    <Layout>
+    <Layout bgColor="black">
       {currentSelected && (
-        <div className="absolute left-0 top-0 z-30 flex h-full max-h-screen w-screen flex-col items-center justify-center bg-black bg-opacity-65 lg:px-24 lg:py-24">
+        <div className="fixed left-0 top-0 z-30 flex h-full max-h-screen w-screen flex-col items-center justify-center bg-black bg-opacity-65 lg:px-24 lg:py-24">
           <IoClose
             onClick={() => setCurrentSelected(undefined)}
             className="absolute right-5 top-7 cursor-pointer rounded-md border-2 border-white p-1 text-white"
             size={35}
           />
           <div className="flex h-full w-full flex-col items-start bg-black lg:flex-row">
-            <video
-              controls
-              disablePictureInPicture
-              controlsList="nodownload"
-              className="aspect-video max-h-full"
-            >
-              <source src={currentSelected.link} />
-            </video>
-            <div className="flex w-full flex-col px-5 py-3">
-              <p className="font-helvetica w-full text-lg font-bold text-white">
+            <div className="flex h-full flex-col justify-center">
+              <video
+                controls
+                disablePictureInPicture
+                controlsList="nodownload"
+                className="aspect-video max-h-full"
+              >
+                <source src={currentSelected.link} />
+              </video>
+            </div>
+            <div className="flex flex-col px-5 py-3">
+              <p className="w-full font-helvetica text-lg font-bold text-white">
                 {currentSelected.name}
               </p>
-              <p className="font-helvetica mt-2 text-xs text-gray-400">
+              <p className="mt-2 font-helvetica text-xs text-gray-400">
                 {currentSelected.client}
               </p>
               <div className="mt-5 flex flex-col overflow-y-auto">
@@ -71,15 +77,42 @@ const WorksPage = () => {
           </div>
         </div>
       )}
-      {videos.length > 0 ? (
-        <div className="z-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-          {videos.map((vid, i) => (
-            <VideoElem
-              loading={pageLoading}
-              key={i}
-              video={vid}
-              setCurrentSelected={setCurrentSelected}
-            />
+      {videosGroup.length > 0 ? (
+        <div className="relative z-10 flex flex-col items-center">
+          {videosGroup.map((vid, i) => (
+            <div className="relative flex w-full flex-col items-center" key={i}>
+              <div className="sticky top-0 flex w-full flex-row bg-black py-1.5 pl-3 font-helvetica text-xl text-white">
+                {vid.category}
+              </div>
+              <Splide
+                className="w-full"
+                options={{
+                  autoplay: true,
+                  // type: "loop",
+                  perPage: 3,
+                  perMove: 1,
+                  breakpoints: {
+                    1024: {
+                      perPage: 2,
+                    },
+                    768: {
+                      perPage: 1,
+                    },
+                  },
+                  arrows: vid?.videos!.length > 3,
+                }}
+              >
+                {vid.videos?.map((v, i) => (
+                  <SplideSlide key={i} className="w-full">
+                    <VideoElem
+                      loading={pageLoading}
+                      video={v}
+                      setCurrentSelected={setCurrentSelected}
+                    />
+                  </SplideSlide>
+                ))}
+              </Splide>
+            </div>
           ))}
         </div>
       ) : (
@@ -88,7 +121,7 @@ const WorksPage = () => {
             visible={true}
             height="200"
             width="200"
-            color="#000"
+            color="#fff"
             ariaLabel="rings-loading"
             wrapperStyle={{}}
             wrapperClass=""
@@ -120,11 +153,7 @@ const VideoElem: FunctionComponent<VideoElemProps> = ({
       {/* <video controls>
         <source src={link} />
       </video> */}
-      <img
-        className="aspect-video w-full object-cover"
-        src={video.thumb}
-        alt={video.name}
-      />
+      <img className="w-full object-cover" src={video.thumb} alt={video.name} />
     </button>
   );
 };

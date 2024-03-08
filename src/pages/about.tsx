@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import { Carousel } from "@/components/Carousel";
 import { Layout } from "@/components/Layout";
@@ -5,15 +6,11 @@ import { type FunctionComponent } from "react";
 
 const people: PeopleImageProps[] = [
   {
-    src: "/assets/samuel.jpg",
-    name: "Samuel",
-    pos: "Cheif",
+    src: "/assets/founders/samuel.jpg",
+    name: "Samuel Lee",
+    pos: "Co-Founder",
   },
-  {
-    src: "https://via.placeholder.com/200",
-    name: "???",
-    pos: "???",
-  },
+  { src: "/assets/founders/bryan.jpg", name: "Bryan Lee", pos: "Co-Founder" },
 ];
 
 const logos = [
@@ -58,7 +55,7 @@ const AboutPage = () => {
       </div>
       <div className="flex flex-col items-center justify-center gap-20 pb-32 pt-24">
         <article className="max-w-[320px] md:max-w-screen-md">
-          <p className="font-helvetica text-justify text-xl">
+          <p className="text-justify font-helvetica text-xl">
             <span className="text-3xl font-bold uppercase">
               Started in 2022,
             </span>{" "}
@@ -88,11 +85,11 @@ const AboutPage = () => {
             </span>
           </p>
         </article>
-        <div className="flex w-full max-w-screen-md flex-col px-12">
+        <div className="flex w-full max-w-[320px] flex-col md:max-w-screen-md">
           <p className="font-bebas text-[3.5rem] text-black">
             THE MACHINES BEHIND.
           </p>
-          <div className="mt-8 grid w-full justify-items-center gap-12 md:grid-cols-2">
+          <div className="mt-8 grid w-full gap-12 md:grid-cols-2">
             {people.map((pax) => (
               <PeopleImage
                 key={pax.name}
@@ -103,11 +100,15 @@ const AboutPage = () => {
             ))}
           </div>
         </div>
-        <div className="flex w-full flex-col items-center justify-center">
-          <p className="font-helvetica mb-12 text-4xl font-bold uppercase">
+        <div className="flex w-full max-w-[320px] flex-col items-center justify-center md:max-w-screen-md">
+          <p className="mb-12 font-helvetica text-4xl font-bold uppercase">
             Our Clients
           </p>
-          <Carousel images={logos} />
+          <div className="flex flex-col items-center gap-10">
+            <Carousel images={logos.slice(0, 8)} speed={0.5} />
+            <Carousel images={logos.slice(9, 17)} speed={0.5} reverse />
+            <Carousel images={logos.slice(18)} speed={0.5} />
+          </div>
         </div>
       </div>
     </Layout>
@@ -131,7 +132,7 @@ const PeopleImage: FunctionComponent<PeopleImageProps> = ({
       <img
         src={src}
         alt={name}
-        className="h-[200px] w-[200px] object-cover object-center"
+        className="h-[300px] object-cover object-center"
       />
       <p className="mt-2 font-bebas text-3xl tracking-tight">{name}</p>
       <p className="-mt-1 text-lg font-thin uppercase">{pos}</p>

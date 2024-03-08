@@ -5,6 +5,8 @@ import Head from "next/head";
 import { FormInput } from "@/components/Form/Input";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
+import Link from "next/link";
+import { IoIosMail, IoIosCall } from "react-icons/io";
 
 export type FormikForm = {
   name: string;
@@ -91,10 +93,28 @@ const ContactPage = () => {
               <FormInput name="message" as="textarea" />
               <button
                 type="submit"
-                className="font-helvetica flex w-full flex-row justify-center bg-black py-2 text-center font-bold text-white"
+                className="flex w-full flex-row justify-center bg-black py-2 text-center font-helvetica font-bold text-white"
               >
                 Submit
               </button>
+              <div className="mt-1 flex w-full flex-row items-center justify-start">
+                <Link
+                  href={"tel:016-2537015"}
+                  className="flex flex-row items-center font-helvetica italic"
+                >
+                  <IoIosCall className="mr-1" size={20} />
+                  Samuel Lee 016-2537015
+                </Link>
+              </div>
+              <div className="-mt-1 flex w-full flex-row items-center justify-start">
+                <Link
+                  href={"mailto:dimndump@gmail.com"}
+                  className="flex flex-row items-center font-helvetica italic"
+                >
+                  <IoIosMail size={20} className="mr-1" />
+                  dimndump@gmail.com
+                </Link>
+              </div>
             </Form>
           </Formik>
         </div>

@@ -11,13 +11,17 @@ const links = [
   { label: "contact", to: "/contact" },
 ];
 
-export const Layout: FunctionComponent<{ children: ReactNode }> = ({
-  children,
-}) => {
+export const Layout: FunctionComponent<{
+  children: ReactNode;
+  bgColor?: string;
+}> = ({ children, bgColor }) => {
   const router = useRouter();
 
   return (
-    <main className="relative flex min-h-screen flex-col">
+    <main
+      className="relative flex min-h-screen flex-col"
+      style={{ background: bgColor ?? "white" }}
+    >
       <input
         type="checkbox"
         id="drawer-toggle"

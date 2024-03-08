@@ -88,7 +88,6 @@ html::-webkit-scrollbar,
 }
 
 .splide__slide {
-  width: unset !important;
   display: inline-flex !important;
   justify-content: center !important;
   align-items: center !important;

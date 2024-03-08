@@ -31,7 +31,7 @@ const SubmitRegistration = async (
       const data = await sheets.spreadsheets.values.get({
         spreadsheetId: process.env.SPREADSHEET_ID,
 
-        range: "CDN!A:E",
+        range: "CDN!A:F",
       });
 
       res.status(200).json(data);
