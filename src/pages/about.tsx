@@ -104,7 +104,7 @@ const AboutPage = () => {
           <p className="mb-12 font-helvetica text-4xl font-bold uppercase">
             Our Clients
           </p>
-          <div className="flex flex-col items-center gap-10">
+          <div className="flex flex-col items-center w-full gap-10">
             <Carousel images={logos.slice(0, 8)} speed={0.5} />
             <Carousel images={logos.slice(9, 17)} speed={0.5} reverse />
             <Carousel images={logos.slice(18)} speed={0.5} />
