@@ -28,7 +28,7 @@ export default function Home() {
           {images.map((src, i) => (
             <SplideSlide key={i}>
               <img
-                className="h-[calc(100vh-70px)] w-full object-cover object-center"
+                className="h-[calc(100vh-70px-52px)] w-full object-cover object-center"
                 src={`/assets/home/${src}.jpg`}
                 alt={src}
               />
