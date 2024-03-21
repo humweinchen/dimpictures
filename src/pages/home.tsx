@@ -4,16 +4,16 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import Head from "next/head";
 
 const images = [
-  "1.webp",
-  "2.webp",
-  "3.webp",
-  "4.webp",
-  "5.webp",
-  "6.webp",
-  "7.webp",
-  "8.jpg",
-  "9.jpg",
-  "10.jpg",
+  // { src: "1.webp", pos: "25% 0" },
+  // { src: "2.webp", pos: "65% 0" },
+  // { src: "3.webp", pos: "65% 0" },
+  // { src: "4.webp", pos: "55% 0" },
+  // { src: "5.webp", pos: "center" },
+  // { src: "6.webp", pos: "center" },
+  // { src: "7.webp", pos: "30% 0" },
+  // { src: "8.jpg", pos: "center" },
+  // { src: "9.jpg", pos: "37.5% 0" },
+  { src: "10.jpg", pos: "65% 0" },
 ];
 
 export default function Home() {
@@ -39,9 +39,12 @@ export default function Home() {
           {images.map((src, i) => (
             <SplideSlide key={i}>
               <img
-                className="h-[calc(100vh-70px-52px)] w-full object-cover object-center"
-                src={`/assets/home/${src}`}
-                alt={src}
+                style={{
+                  objectPosition: src.pos,
+                }}
+                className="h-[calc(100vh-70px-52px)] w-full object-cover"
+                src={`/assets/home/${src.src}`}
+                alt={src.src}
               />
             </SplideSlide>
           ))}

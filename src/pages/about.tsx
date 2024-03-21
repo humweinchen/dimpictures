@@ -124,7 +124,7 @@ const AboutPage = () => {
             Our Clients
           </p>
           <div className="flex w-full flex-col items-center gap-10">
-            <Carousel images={logos.slice(0, 8)} speed={0.5} square />
+            <Carousel images={logos.slice(0, 8)} speed={0.5} />
             <Carousel images={logos.slice(8, 12)} speed={0.5} reverse />
             <Carousel images={logos.slice(12)} speed={0.5} />
           </div>

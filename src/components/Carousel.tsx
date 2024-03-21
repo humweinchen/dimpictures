@@ -9,12 +9,10 @@ interface CarouselProps {
   images: { bg: string; src: string }[];
   speed?: number;
   reverse?: boolean;
-  square?: boolean;
 }
 export const Carousel: FunctionComponent<CarouselProps> = ({
   images,
   reverse,
-  square,
   speed,
 }) => {
   return (
