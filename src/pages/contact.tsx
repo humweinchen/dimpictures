@@ -103,7 +103,7 @@ const ContactPage = () => {
                   className="flex flex-row items-center font-helvetica italic"
                 >
                   <IoIosCall className="mr-1" size={20} />
-                  Samuel Lee 016-2537015
+                  016-2537015
                 </Link>
               </div>
               <div className="-mt-1 flex w-full flex-row items-center justify-start">

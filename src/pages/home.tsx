@@ -3,7 +3,18 @@ import { Layout } from "@/components/Layout";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import Head from "next/head";
 
-const images = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+const images = [
+  "1.webp",
+  "2.webp",
+  "3.webp",
+  "4.webp",
+  "5.webp",
+  "6.webp",
+  "7.webp",
+  "8.jpg",
+  "9.jpg",
+  "10.jpg",
+];
 
 export default function Home() {
   return (
@@ -29,7 +40,7 @@ export default function Home() {
             <SplideSlide key={i}>
               <img
                 className="h-[calc(100vh-70px-52px)] w-full object-cover object-center"
-                src={`/assets/home/${src}.jpg`}
+                src={`/assets/home/${src}`}
                 alt={src}
               />
             </SplideSlide>

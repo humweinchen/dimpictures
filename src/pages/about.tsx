@@ -14,30 +14,49 @@ const people: PeopleImageProps[] = [
 ];
 
 const logos = [
-  "1.png",
-  "2.png",
-  "3.jpg",
-  "4.jpg",
-  "5.jpg",
-  "6.png",
-  "7.png",
-  "8.png",
-  "9.jpg",
-  "10.jpg",
-  "11.png",
-  "12.png",
-  "13.png",
-  "14.png",
-  "15.png",
-  "16.png",
-  "17.png",
-  "18.jpg",
-  "19.jpeg",
-  "20.png",
-  "21.png",
-  "22.png",
-  "23.jpg",
-  "24.png",
+  {
+    bg: "",
+    src: "3.jpg",
+  },
+  {
+    bg: "#000",
+    src: "4.jpg",
+  },
+  {
+    bg: "",
+    src: "10.jpg",
+  },
+  {
+    bg: "#00a2b2",
+    src: "13.png",
+  },
+  {
+    bg: "#ec313a",
+    src: "16.png",
+  },
+  {
+    bg: "#000",
+    src: "23.jpg",
+  },
+  {
+    bg: "",
+    src: "5.jpg",
+  },
+  { src: "19.jpeg", bg: "" },
+  { src: "6.png", bg: "" },
+  { src: "8.png", bg: "" },
+  { src: "18.jpg", bg: "" },
+  { src: "20.png", bg: "" },
+
+  { src: "12.png", bg: "" },
+  { src: "11.png", bg: "" },
+  { src: "9.jpg", bg: "" },
+  { src: "7.png", bg: "" },
+  { src: "21.png", bg: "" },
+  { src: "22.png", bg: "" },
+  { src: "24.png", bg: "" },
+  { src: "1.png", bg: "" },
+  { src: "2.png", bg: "" },
 ];
 
 const AboutPage = () => {
@@ -104,10 +123,10 @@ const AboutPage = () => {
           <p className="mb-12 font-helvetica text-4xl font-bold uppercase">
             Our Clients
           </p>
-          <div className="flex flex-col items-center w-full gap-10">
-            <Carousel images={logos.slice(0, 8)} speed={0.5} />
-            <Carousel images={logos.slice(9, 17)} speed={0.5} reverse />
-            <Carousel images={logos.slice(18)} speed={0.5} />
+          <div className="flex w-full flex-col items-center gap-10">
+            <Carousel images={logos.slice(0, 8)} speed={0.5} square />
+            <Carousel images={logos.slice(8, 12)} speed={0.5} reverse />
+            <Carousel images={logos.slice(12)} speed={0.5} />
           </div>
         </div>
       </div>
