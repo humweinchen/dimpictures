@@ -82,8 +82,7 @@ const AboutPage = () => {
             Hence the birth of Dim Pictures.
             <br />
             <br />
-            <span className="text-xl font-bold">D I M</span> has 2 meanings
-            here.
+            <span className="text-xl font-bold">DIM</span> has 2 meanings here.
             <br />
             <br />
             One being the control of lighting which is our obsession with
