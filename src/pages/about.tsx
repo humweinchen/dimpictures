@@ -82,7 +82,7 @@ const AboutPage = () => {
             Hence the birth of Dim Pictures.
             <br />
             <br />
-            <span className="font-bebas text-2xl">D I M</span> has 2 meanings
+            <span className="text-xl font-bold">D I M</span> has 2 meanings
             here.
             <br />
             <br />
@@ -124,6 +124,8 @@ const AboutPage = () => {
             Our Clients
           </p>
           <div className="flex w-full flex-col items-center gap-10">
+            {/* TODO: Add customizability through googlesheets */}
+            {/* merge line 2 and line 3 */}
             <Carousel images={logos.slice(0, 8)} speed={0.5} />
             <Carousel images={logos.slice(8, 12)} speed={0.5} reverse />
             <Carousel images={logos.slice(12)} speed={0.5} />
