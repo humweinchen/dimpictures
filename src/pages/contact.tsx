@@ -86,7 +86,7 @@ const ContactPage = () => {
             }}
           >
             <Form className="flex w-full max-w-[300px] flex-grow flex-col gap-3 sm:max-w-[450px] lg:max-w-screen-sm">
-              <p className="font-helvetica text-3xl font-bold">Contact Us</p>
+              <p className="font-bebas text-[3rem] font-bold">Contact Us</p>
               <FormInput name="name" />
               <FormInput name="contact" />
               <FormInput name="email" />
