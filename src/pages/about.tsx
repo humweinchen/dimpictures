@@ -119,7 +119,7 @@ const AboutPage = () => {
           </div>
         </div>
         <div className="flex w-full max-w-[320px] flex-col items-center justify-center md:max-w-screen-md">
-          <p className="mb-12 font-helvetica text-4xl font-bold uppercase">
+          <p className="mb-12 font-bebas text-[3rem] font-bold uppercase">
             Our Clients
           </p>
           <div className="flex w-full flex-col items-center gap-10">
