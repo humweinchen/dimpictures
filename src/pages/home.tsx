@@ -4,15 +4,15 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import Head from "next/head";
 
 const images = [
-  // { src: "1.webp", pos: "25% 0" },
-  // { src: "2.webp", pos: "65% 0" },
-  // { src: "3.webp", pos: "65% 0" },
-  // { src: "4.webp", pos: "55% 0" },
-  // { src: "5.webp", pos: "center" },
-  // { src: "6.webp", pos: "center" },
-  // { src: "7.webp", pos: "30% 0" },
-  // { src: "8.jpg", pos: "center" },
-  // { src: "9.jpg", pos: "37.5% 0" },
+  { src: "1.webp", pos: "25% 0" },
+  { src: "2.webp", pos: "65% 0" },
+  { src: "3.webp", pos: "65% 0" },
+  { src: "4.webp", pos: "55% 0" },
+  { src: "5.webp", pos: "center" },
+  { src: "6.webp", pos: "center" },
+  { src: "7.webp", pos: "30% 0" },
+  { src: "8.jpg", pos: "center" },
+  { src: "9.jpg", pos: "37.5% 0" },
   { src: "10.jpg", pos: "65% 0" },
 ];
 
