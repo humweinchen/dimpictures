@@ -33,7 +33,8 @@ export default function Home() {
             type: "fade",
             arrows: false,
             autoplay: true,
-            interval: 2500,
+            pauseOnHover: false,
+            interval: 3500,
           }}
         >
           {images.map((src, i) => (
