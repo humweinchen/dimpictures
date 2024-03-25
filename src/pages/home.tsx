@@ -5,9 +5,9 @@ import Head from "next/head";
 
 const images = [
   { src: "1.webp", pos: "25% 0" },
-  { src: "2.webp", pos: "65% 0" },
-  { src: "3.webp", pos: "65% 0" },
-  { src: "4.webp", pos: "55% 0" },
+  { src: "2.webp", pos: "65% center" },
+  { src: "3.webp", pos: "65% center" },
+  { src: "4.webp", pos: "55% center" },
   { src: "5.webp", pos: "center" },
   { src: "6.webp", pos: "center" },
   { src: "7.webp", pos: "30% 0" },
