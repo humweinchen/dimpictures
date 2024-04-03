@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { RiVimeoFill, RiInstagramFill } from "react-icons/ri";
+import { RiInstagramFill } from "react-icons/ri";
 import type { ReactNode, FunctionComponent } from "react";
 import { useRouter } from "next/router";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -46,10 +46,10 @@ export const Layout: FunctionComponent<{
           ))}
         </div>
         <div className="hidden flex-row items-center gap-5 text-3xl md:flex">
-          <RiVimeoFill
+          {/* <RiVimeoFill
             color="white"
             onClick={() => window.open("https://vimeo.com/user214194019")}
-          />
+          /> */}
           <RiInstagramFill
             color="white"
             onClick={() =>
@@ -81,10 +81,10 @@ export const Layout: FunctionComponent<{
               </Link>
             ))}
             <div className="flex flex-row items-center gap-5 text-3xl">
-              <RiVimeoFill
+              {/* <RiVimeoFill
                 color="white"
                 onClick={() => window.open("https://vimeo.com/user214194019")}
-              />
+              /> */}
               <RiInstagramFill
                 color="white"
                 onClick={() =>

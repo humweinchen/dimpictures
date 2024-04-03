@@ -6,7 +6,7 @@ import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 import { type FunctionComponent } from "react";
 
 interface CarouselProps {
-  images: { bg: string; src: string }[];
+  images: { bg?: string; src: string }[];
   speed?: number;
   reverse?: boolean;
 }
@@ -39,7 +39,7 @@ export const Carousel: FunctionComponent<CarouselProps> = ({
           <img
             style={{ background: src.bg }}
             className={`mr-5 h-[100px] w-[100px] object-contain`}
-            src={`/assets/logos/${src.src}`}
+            src={src.src}
             alt={src.src}
             onClick={() => console.log(src)}
           />

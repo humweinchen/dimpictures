@@ -24,7 +24,7 @@ const ContactPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <div className="flex h-[calc(100vh-70px)] flex-col items-center justify-center bg-white py-16">
+        <div className="flex h-[calc(100vh-70px)] flex-col items-center justify-center bg-white py-8 2xl:py-16">
           <Formik<FormikForm>
             initialValues={{
               contact: "",
@@ -86,7 +86,9 @@ const ContactPage = () => {
             }}
           >
             <Form className="flex w-full max-w-[300px] flex-grow flex-col gap-3 sm:max-w-[450px] lg:max-w-screen-sm">
-              <p className="font-bebas text-[3rem] font-bold">Contact Us</p>
+              <p className="font-bebas text-2xl font-bold 2xl:text-[3rem]">
+                Contact Us
+              </p>
               <FormInput name="name" />
               <FormInput name="contact" />
               <FormInput name="email" />

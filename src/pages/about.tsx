@@ -2,64 +2,53 @@
 /* eslint-disable @next/next/no-img-element */
 import { Carousel } from "@/components/Carousel";
 import { Layout } from "@/components/Layout";
-import { type FunctionComponent } from "react";
-
-const people: PeopleImageProps[] = [
-  {
-    src: "/assets/founders/samuel.jpg",
-    name: "Samuel Lee",
-    pos: "Co-Founder",
-  },
-  { src: "/assets/founders/bryan.jpg", name: "Bryan Lee", pos: "Co-Founder" },
-];
-
-const logos = [
-  {
-    bg: "",
-    src: "3.jpg",
-  },
-  {
-    bg: "#000",
-    src: "4.jpg",
-  },
-  {
-    bg: "",
-    src: "10.jpg",
-  },
-  {
-    bg: "#00a2b2",
-    src: "13.png",
-  },
-  {
-    bg: "#ec313a",
-    src: "16.png",
-  },
-  {
-    bg: "#000",
-    src: "23.jpg",
-  },
-  {
-    bg: "",
-    src: "5.jpg",
-  },
-  { src: "19.jpeg", bg: "" },
-  { src: "6.png", bg: "" },
-  { src: "8.png", bg: "" },
-  { src: "18.jpg", bg: "" },
-  { src: "20.png", bg: "" },
-
-  { src: "12.png", bg: "" },
-  { src: "11.png", bg: "" },
-  { src: "9.jpg", bg: "" },
-  { src: "7.png", bg: "" },
-  { src: "21.png", bg: "" },
-  { src: "22.png", bg: "" },
-  { src: "24.png", bg: "" },
-  { src: "1.png", bg: "" },
-  { src: "2.png", bg: "" },
-];
+import { useEffect, useState, type FunctionComponent } from "react";
 
 const AboutPage = () => {
+  useEffect(() => {
+    void (async () => {
+      await fetch("/api/logos", { method: "GET" }).then((r) =>
+        r.json().then((res: string[]) => {
+          res.shift();
+          const data = res.map((a) => {
+            return {
+              src: String(a[0]),
+              bg: a[1] ?? undefined,
+              type: String(a[2]),
+            };
+          });
+          setLogos(data);
+        }),
+      );
+    })();
+  }, []);
+
+  const [logos, setLogos] = useState<
+    { src: string; bg?: string; type: string }[]
+  >([]);
+
+  useEffect(() => {
+    void (async () => {
+      await fetch("/api/founders", { method: "GET" }).then((r) =>
+        r.json().then((res: string[]) => {
+          res.shift();
+          const data = res.map((a) => {
+            return {
+              name: String(a[0]),
+              src: String(a[1]),
+              pos: String(a[2]),
+            };
+          });
+          setFounders(data);
+        }),
+      );
+    })();
+  }, []);
+
+  const [founders, setFounders] = useState<
+    { name: string; src: string; pos: string }[]
+  >([]);
+
   return (
     <Layout>
       <div className="relative w-full">
@@ -103,33 +92,43 @@ const AboutPage = () => {
             </span>
           </p>
         </article>
-        <div className="flex w-full max-w-[320px] flex-col md:max-w-screen-md">
-          <p className="font-bebas text-[3.5rem] text-black">
-            THE MACHINES BEHIND.
-          </p>
-          <div className="mt-8 grid w-full gap-12 md:grid-cols-2">
-            {people.map((pax) => (
-              <PeopleImage
-                key={pax.name}
-                name={pax.name}
-                src={pax.src}
-                pos={pax.pos}
+        {founders.length > 0 ? (
+          <div className="flex w-full max-w-[320px] flex-col md:max-w-screen-md">
+            <p className="font-bebas text-[3.5rem] text-black">
+              THE MACHINES BEHIND.
+            </p>
+            <div className="mt-8 grid w-full gap-12 md:grid-cols-2">
+              {founders.map((pax) => (
+                <PeopleImage
+                  key={pax.name}
+                  name={pax.name}
+                  src={pax.src}
+                  pos={pax.pos}
+                />
+              ))}
+            </div>
+          </div>
+        ) : null}
+        {logos.length > 0 ? (
+          <div className="flex w-full max-w-[320px] flex-col items-center justify-center md:max-w-screen-md">
+            <p className="mb-12 font-bebas text-[3rem] font-bold uppercase">
+              Our Clients
+            </p>
+            <div className="flex w-full flex-col items-center gap-10">
+              {/* TODO: Add customizability through googlesheets */}
+              {/* merge line 2 and line 3 */}
+              <Carousel
+                images={logos.filter((lg) => lg.type === "row#1")}
+                speed={0.5}
               />
-            ))}
+              <Carousel
+                images={logos.filter((lg) => lg.type === "row#2")}
+                speed={0.5}
+                reverse
+              />
+            </div>
           </div>
-        </div>
-        <div className="flex w-full max-w-[320px] flex-col items-center justify-center md:max-w-screen-md">
-          <p className="mb-12 font-bebas text-[3rem] font-bold uppercase">
-            Our Clients
-          </p>
-          <div className="flex w-full flex-col items-center gap-10">
-            {/* TODO: Add customizability through googlesheets */}
-            {/* merge line 2 and line 3 */}
-            <Carousel images={logos.slice(0, 8)} speed={0.5} />
-            <Carousel images={logos.slice(8, 12)} speed={0.5} reverse />
-            <Carousel images={logos.slice(12)} speed={0.5} />
-          </div>
-        </div>
+        ) : null}
       </div>
     </Layout>
   );

@@ -1,5 +1,5 @@
 import { type Config } from "tailwindcss";
-import { colors } from "tailwindcss/defaultTheme";
+import { colors, screens } from "tailwindcss/defaultTheme";
 
 export default {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
@@ -14,6 +14,10 @@ export default {
         arial: ["Arial", "sans-serif"],
         helvetica: ["helveticaneue", "Helvetica"],
       },
+    },
+    screens: {
+      ...screens,
+      "2xl": "1537px",
     },
   },
   plugins: [],

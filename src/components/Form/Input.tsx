@@ -16,11 +16,13 @@ export const FormInput: FunctionComponent<FormInputProps> = ({
   const { isSubmitting, errors } = useFormikContext<FormikForm>();
   return (
     <div className="flex flex-col gap-2">
-      <label className="font-helvetica capitalize">{label ?? name}</label>
+      <label className="font-helvetica text-sm capitalize 2xl:text-base">
+        {label ?? name}
+      </label>
 
       <Field
         as={as ?? "input"}
-        className={`font-helvetica ${as === "textarea" ? "min-h-[100px] resize-none" : ""} border border-black/50 bg-[#f1f3f4] p-2`}
+        className={`font-helvetica text-xs 2xl:text-base ${as === "textarea" ? "min-h-[70px] resize-none 2xl:min-h-[100px]" : ""} border border-black/50 bg-[#f1f3f4] p-2`}
         name={name}
         id={name}
         disabled={isSubmitting}
