@@ -16,6 +16,7 @@ export default function Home() {
       .then(res => res.json())
       .then((data: { data: string[] }) => {
         console.log(data.data)
+        data.data.shift();
         setImages(data.data.map((a) => ({ src: String(a[0]), type: String(a[1]) })));
       }));
   }, []);
