@@ -12,18 +12,14 @@ type Image = {
 
 export default function Home() {
   useEffect(() => {
-    void (async () => {
-      await fetch("/api/slides", { method: "GET" }).then((r) =>
-        r.json().then((res: {data: string[]}) => {
-          
-          const data = res.data.map((a) => {
-            return { src: String(a[0]), type: String(a[1]) };
-          });
-          setImages(data);
-        }),
-      );
-    })();
+    fetch("/api/slides")
+      .then(res => res.json())
+      .then((data: { data: string[] }) => {
+        
+        setImages(data.data.map((a) => ({ src: String(a[0]), type: String(a[1]) })));
+      });
   }, []);
+
 
   const [images, setImages] = useState<Image[]>([]);
 
