@@ -15,7 +15,7 @@ export default function Home() {
     void (fetch("/api/slides")
       .then(res => res.json())
       .then((data: { data: string[] }) => {
-        
+        console.log(data.data)
         setImages(data.data.map((a) => ({ src: String(a[0]), type: String(a[1]) })));
       }));
   }, []);
