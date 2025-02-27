@@ -30,11 +30,13 @@ const SubmitRegistration = async (
 
       const data = await sheets.spreadsheets.values.get({
         spreadsheetId: process.env.SPREADSHEET_ID,
-
+        
         range: "Slides!A:B",
       });
 
-      res.status(200).json(data.data.values);
+      const transformedData = data.data.values;
+
+      res.status(200).json({data: transformedData});
     } catch (err) {
       console.log(err);
       res.status(500).json({ error: err });

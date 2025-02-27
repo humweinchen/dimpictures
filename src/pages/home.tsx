@@ -14,9 +14,9 @@ export default function Home() {
   useEffect(() => {
     void (async () => {
       await fetch("/api/slides", { method: "GET" }).then((r) =>
-        r.json().then((res: string[]) => {
-          res.shift();
-          const data = res.map((a) => {
+        r.json().then((res: {data: string[]}) => {
+          
+          const data = res.data.map((a) => {
             return { src: String(a[0]), type: String(a[1]) };
           });
           setImages(data);
