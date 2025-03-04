@@ -75,7 +75,7 @@ export default function Home() {
               .map((src, i) => (
                 <SplideSlide key={i}>
                   <img
-                    className="h-[calc(100vh-70px-52px)] w-full object-cover"
+                    className="h-[calc(100vh-70px-50px)] w-full object-cover"
                     src={src.src}
                     alt={src.src}
                   />
